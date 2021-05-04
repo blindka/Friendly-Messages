@@ -105,11 +105,9 @@ client.on("message", msg => {
     msg.channel.send("coins")
   }
   if(msg.content.startsWith("commands")) {
-    msg.channel.send("__________________________________________")
     msg.channel.send("|         The available commands are:      |")
     msg.channel.send("|->inspre me - for inspirations quote      |")
     msg.channel.send("|->$resoping - turning on/off bot response |")
-    msg.channel.send("|__________________________________________|")
   }
   if (msg.content.startsWith("$responding")) {
     value = msg.content.split("$responding ")[1]
@@ -124,6 +122,5 @@ client.on("message", msg => {
   }
 
 })
-
 keepAlive()
 client.login(process.env.TOKEN)
