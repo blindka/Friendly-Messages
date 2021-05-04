@@ -102,7 +102,6 @@ client.on("message", msg => {
   if(msg.content.startsWith("mine")){
     const mining = Math.floor(Math.random() * 10000) + 1;
     msg.channel.send("You went mining and got")
-    return mining;
     msg.channel.send("coins")
   }
   if(msg.content.startsWith("commands")) {
