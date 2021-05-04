@@ -6,13 +6,9 @@ const Database = require("@replit/database")
 const db = new Database()
 const client = new Discord.Client()
 
-const sadWords = ["sad", "depressed", "unhappy", "angry"]
+const helper = ["pls help", "help", "!help"]
 
-const starterEncouragements = [
-  "Cheer up!",
-  "Hang in there.",
-  "You are a great person / bot!"
-]
+const starterEncouragements = ["Please type in chat the word: commands"]
 
 db.get("encouragements").then(encouragements => {
   if (!encouragements || encouragements.length < 1) {
@@ -73,14 +69,13 @@ client.on("message", msg => {
   }
 
   db.get("responding").then(responding =>{
-    if (responding && sadWords.some(word => msg.content.includes(word))) {
+    if (responding && helper.some(word => msg.content.includes(word))) {
       db.get("encouragements").then(encouragements => {
         const encouragement = encouragements[Math.floor(Math.random() * encouragements.length)]
-        msg.reply(encouragement)
+        msg.reply(starterEncouragements)
       })
     }
   })
-
 
   if (msg.content.startsWith("$new")) {
     encouragingMessage = msg.content.split("$new ")[1]
