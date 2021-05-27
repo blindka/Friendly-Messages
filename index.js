@@ -5,6 +5,7 @@ const Discord = require("discord.js")
 const fetch = require("node-fetch")
 const keepAlive = require("./server")
 const Database = require("@replit/database")
+const welcome = require("./welcome");
 // defining client and database
 const db = new Database()
 const client = new Discord.Client()
@@ -12,6 +13,7 @@ const client = new Discord.Client()
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`)
-})
+      welcome(client);
+});
 keepAlive()
 client.login(process.env.TOKEN)
